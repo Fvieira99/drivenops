@@ -15,4 +15,4 @@ jobs:
           envkey_DATABASE_URL: ${{secrets.DB_URL}}
           file_name: .env.test
       - name: Run Tests
-        run: docker-compose -f ./back-end/docker-compose-test.yml run node_driven-ops_app_ci npm run test
+        run: docker-compose -f docker-compose-test.yml run node_driven-ops_app_ci npm run test
