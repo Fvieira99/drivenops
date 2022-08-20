@@ -1,0 +1,18 @@
+name: Pull Request
+on: [Pull_Request]
+jobs:
+  PullRequest:
+    runs-on: ubuntu-latest
+    step:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Make a new env file
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_POSTGRES_USER: ${{secrets.PG_USER}}
+          envkey_POSTGRES_PASSWORD: ${{secrets.PG_PW}}
+          envkey_POSTGRES_DB: ${{secrets.PG_DB}}
+          envkey_DATABASE_URL: ${{secrets.DB_URL}}
+          file_name: .env.test
+      - name: Run Tests
+        run: docker-compose -f ./back-end/docker-compose-test.yml run node_driven-ops_app_ci npm run test

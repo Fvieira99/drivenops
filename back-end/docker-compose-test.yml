@@ -1,0 +1,21 @@
+services:
+  postgres_driven-ops_database_ci:
+    image: postgres
+    container_name: postgres_driven-ops_database_ci
+    restart: always
+    ports:
+      - 1234:5432
+    env_file:
+      - .env.test
+    volumes:
+      - pg_driven-ops_database_ci:/var/lib/postgresql/data
+
+  node_driven-ops_app_ci:
+    container_name: node_driven-ops_app_ci
+    build: .
+    ports:
+      - 5000:5000
+    env_file:
+      - .env.test
+    depends_on:
+      - postgres_driven-ops_database_ci
