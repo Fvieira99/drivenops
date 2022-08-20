@@ -10,7 +10,7 @@ services:
 
   node_driven-ops_app_ci:
     container_name: node_driven-ops_app_ci
-    build: .
+    build: ./back-end
     ports:
       - 5000:5000
     env_file:
