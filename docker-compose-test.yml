@@ -6,7 +6,7 @@ services:
     ports:
       - 1234:5432
     env_file:
-      - back-end/.env.test
+      - .env.test
     volumes:
       - pg_driven-ops_database_ci:/var/lib/postgresql/data
 
@@ -16,6 +16,6 @@ services:
     ports:
       - 5000:5000
     env_file:
-      - back-end/.env.test
+      - .env.test
     depends_on:
       - postgres_driven-ops_database_ci
