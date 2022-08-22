@@ -11,8 +11,8 @@ jobs:
         with:
           envkey_POSTGRES_USER: ${{secrets.PG_USER}}
           envkey_POSTGRES_PASSWORD: ${{secrets.PG_PW}}
-          envkey_POSTGRES_DB: ${{secrets.PG_DB}}
-          envkey_DATABASE_URL: ${{secrets.DB_URL}}
+          envkey_POSTGRES_DB: ${{secrets.CI_PG_DB}}
+          envkey_DATABASE_URL: ${{secrets.CI_DB_URL}}
           file_name: .env.test
       - name: Run Tests
         run: docker-compose -f docker-compose-test.yml run node_driven-ops_app_ci npm run test
